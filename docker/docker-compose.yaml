@@ -179,7 +179,8 @@ x-shared-env: &shared-api-worker-env
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.6.15
+    # image: langgenius/dify-api:0.6.15
+    image: eda-dify/dify-api:latest
     restart: always
     environment:
       # Use the shared environment variables.
@@ -199,7 +200,8 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.6.15
+    # image: langgenius/dify-api:0.6.15
+    image: eda-dify/dify-api:latest
     restart: always
     environment:
       # Use the shared environment variables.
@@ -256,7 +258,7 @@ services:
 
   # The DifySandbox
   sandbox:
-    image: langgenius/dify-sandbox:0.2.1
+    image: langgenius/dify-sandbox:0.2.4
     restart: always
     environment:
       # The DifySandbox configurations
