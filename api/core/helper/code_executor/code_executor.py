@@ -6,6 +6,7 @@ from typing import Literal, Optional
 
 from httpx import get, post
 from pydantic import BaseModel
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 from yarl import URL
 
 from configs import dify_config
@@ -20,7 +21,6 @@ from core.helper.code_executor.python3.python3_transformer import (
     Python3TemplateTransformer,
 )
 from core.helper.code_executor.template_transformer import TemplateTransformer
-from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 logger = logging.getLogger(__name__)
 
