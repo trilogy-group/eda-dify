@@ -125,13 +125,13 @@ class CodeExecutor:
         try:
             response = response.json()
         except:
-            raise CodeExecutionException("Failed to parse response")
+            raise CodeExecutionException('Failed to parse response')
 
+        if (code := response.get('code')) != 0:
+            raise CodeExecutionException(f"Got error code: {code}. Got error msg: {response.get('message')}")
+        
         response = CodeExecutionResponse(**response)
-
-        if response.code != 0:
-            raise CodeExecutionException(response.message)
-
+        
         if response.data.error:
             raise CodeExecutionException(response.data.error)
 
