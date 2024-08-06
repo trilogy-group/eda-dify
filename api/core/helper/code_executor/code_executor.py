@@ -73,6 +73,7 @@ class CodeExecutor:
     @retry(
         stop=stop_after_attempt(3),
         wait=wait_random_exponential(multiplier=1, max=10),
+        reraise=True
     )
     def execute_code(
         cls,

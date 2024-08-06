@@ -249,3 +249,18 @@ To protect your privacy, please avoid posting security issues on GitHub. Instead
 ## License
 
 This repository is available under the [Dify Open Source License](LICENSE), which is essentially Apache 2.0 with a few additional restrictions.
+
+## Creating the new images
+
+```
+cd web
+docker build -t eda-dify/dify-web:latest .
+docker run -d -p 3000:3000 --name dify-web --env-file .env.local eda-dify/dify-web:latest
+
+cd ../api
+docker build -t eda-dify/dify-api:latest .
+docker run -d -p 5001:5001 --name api --env-file .env eda-dify/dify-api
+
+cd ../docker
+docker-compose up -d
+```
